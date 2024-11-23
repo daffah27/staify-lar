@@ -40,12 +40,17 @@
                                     <td>{{ $dana->nominal }}</td>
                                     <td>
                                         <div class="text-center">
-                                            <a href="#" data-toggle="modal" data-target="#terimaModal-{{ $dana->id }}" class="btn btn-success small">Terima</a>
-                                            <a href="#" data-toggle="modal" data-target="#tolakModal-{{ $dana->id }}" class="btn btn-danger small">Tolak</a>
-                                          
+                                            <a href="#" data-toggle="modal"
+                                                data-target="#terimaModal-{{ $dana->id }}"
+                                                class="btn btn-success small">Terima</a>
+                                            <a href="#" data-toggle="modal"
+                                                data-target="#tolakModal-{{ $dana->id }}"
+                                                class="btn btn-danger small">Tolak</a>
+
                                         </div>
                                         <a href="{{ route('dana.detail', $dana->id) }}"
                                             class="btn btn-primary small">Detail</a>
+                                            <i class="bi bi-windows"></i>
 
                                     </td>
                                 </tr>

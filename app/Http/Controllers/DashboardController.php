@@ -15,9 +15,9 @@ class DashboardController extends Controller
     {
         if (Auth::user()->role == 'kemahasiswaan') {
             //proposal
-            $countTolak = DB::table('danas')->where('konfirmasi', 'rejected')->count();
-            $countOnRev = DB::table('danas')->where('konfirmasi', 'pending')->count();
-            $countVerif = DB::table('danas')->where('konfirmasi', 'accepted')->count();
+            $countTolak = DB::table('danas')->where('konfirmasi', 'ditolak')->count();
+            $countOnRev = DB::table('danas')->where('konfirmasi', 'on-review')->count();
+            $countVerif = DB::table('danas')->where('konfirmasi', 'terverifikasi')->count();
 
             $jumlahData = $countTolak + $countOnRev + $countVerif;
 
