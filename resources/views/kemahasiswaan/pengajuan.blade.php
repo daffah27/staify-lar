@@ -37,21 +37,25 @@
                                             <p class="rounded p-2 text-white badge bg-danger">Reject</p>
                                         @endif
                                     </td>
-                                    <td>{{ $dana->nominal }}</td>
+                                    <td>Rp. {{ number_format($dana->nominal, 0, ',', '.') }}</td>
                                     <td>
                                         <div class="text-center">
-                                            <a href="#" data-toggle="modal"
-                                                data-target="#terimaModal-{{ $dana->id }}"
-                                                class="btn btn-success small">Terima</a>
-                                            <a href="#" data-toggle="modal"
-                                                data-target="#tolakModal-{{ $dana->id }}"
-                                                class="btn btn-danger small">Tolak</a>
-
+                                            @if ($dana->konfirmasi == 'on-review')
+                                                <a href="#" data-toggle="modal"
+                                                    data-target="#terimaModal-{{ $dana->id }}"
+                                                    class="btn btn-success">
+                                                    <i class="bi bi-check-square"></i>
+                                                </a>
+                                                <a href="#" data-toggle="modal"
+                                                    data-target="#tolakModal-{{ $dana->id }}"
+                                                    class="btn btn-danger">
+                                                    <i class="bi bi-x-square"></i>
+                                                </a>
+                                            @endif
+                                            <a href="{{ route('dana.detail', $dana->id) }}" class="btn btn-secondary">
+                                                <i class="bi bi-exclamation-square"></i>
+                                            </a>
                                         </div>
-                                        <a href="{{ route('dana.detail', $dana->id) }}"
-                                            class="btn btn-primary small">Detail</a>
-                                            <i class="bi bi-windows"></i>
-
                                     </td>
                                 </tr>
 
@@ -77,6 +81,34 @@
                                                     <button class="btn btn-secondary" type="button"
                                                         data-dismiss="modal">Batal</button>
                                                     <button class="btn btn-danger" type="submit">Tolak</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Terima Modal-->
+                                <div class="modal fade" id="terimaModal-{{ $dana->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form action="{{ route('dana.accept', $dana->id) }}" method="post">
+                                                @csrf
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Terima Pendanaan</h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Apakah anda yakin untuk menerima pendanaan ini ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button"
+                                                        data-dismiss="modal">Batal</button>
+                                                    <button class="btn btn-success" type="submit">Yakin</button>
                                                 </div>
                                             </form>
                                         </div>

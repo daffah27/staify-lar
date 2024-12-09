@@ -7,7 +7,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <form action="{{ route('kegiatan.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf 
+                    @csrf
 
                     <div class="form-group">
                         <div class="row">
@@ -19,7 +19,7 @@
                                 <label for="status">Status</label>
                                 <select class="form-control" name="status" id="status" required>
                                     <option value="online">Online</option>
-                                    <option value="onsite">Onsite</option>
+                                    <option value="offline">Offline</option>
                                 </select>
 
                                 <label for="jenis_kegiatan">Jenis Kegiatan</label>
@@ -45,11 +45,11 @@
 
                             <div class="col-12 col-sm-6">
                                 <label for="tanggalMulai">Tanggal Mulai</label>
-                                <input type="datetime-local" name="tanggal_mulai" class="form-control" id="tanggalMulai"
+                                <input type="date" name="tanggal_mulai" class="form-control" id="tanggalMulai"
                                     required>
 
                                 <label for="tanggalSelesai">Tanggal Selesai</label>
-                                <input type="datetime-local" name="tanggal_selesai" class="form-control"
+                                <input type="date" name="tanggal_selesai" class="form-control"
                                     id="tanggalSelesai">
 
                                 <label for="deskripsi">Deskripsi</label>

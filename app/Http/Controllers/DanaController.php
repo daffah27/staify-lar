@@ -16,7 +16,7 @@ class DanaController extends Controller
     public function accept($id)
     {
         $dana = Dana::findOrFail($id);
-        $dana->update(['konfirmasi' => 'accepted']);
+        $dana->update(['konfirmasi' => 'terverifikasi']);
         return redirect()->route('pengajuan')->with('success', 'Dana diterima.');
     }
 
@@ -24,7 +24,7 @@ class DanaController extends Controller
     {
         $dana = Dana::findOrFail($id);
         $dana->alasan = request('alasan');
-        $dana->update(['konfirmasi' => 'rejected']);
+        $dana->update(['konfirmasi' => 'ditolak']);
         return redirect()->route('pengajuan')->with('success', 'Dana ditolak.');
     }
 

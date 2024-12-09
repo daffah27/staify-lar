@@ -8,7 +8,7 @@ use App\Models\User;
 class dana extends Model
 {
     protected $table = 'danas';
-    protected $fillable = ['user_id', 'judul', 'kategori', 'jumlah', 'deskripsi', 'konfirmasi', 'alasan', 'nominal'];
+    protected $fillable = ['user_id', 'nama_kegiatan', 'jenis_kegiatan', 'jumlah', 'deskripsi', 'konfirmasi', 'alasan', 'nominal'];
 
     public function user()
     {
