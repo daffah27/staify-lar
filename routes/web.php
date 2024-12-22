@@ -7,6 +7,7 @@ use App\Http\Controllers\DanaController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,4 +48,6 @@ Route::get('/pengajuan', [DanaController::class, 'index'])->name('pengajuan')->m
 Route::post('/pengajuan/accept/{id}', [DanaController::class, 'accept'])->name('dana.accept')->middleware('auth');
 Route::post('/pengajuan/reject/{id}', [DanaController::class, 'reject'])->name('dana.reject');
 Route::get('/pengajuan/detail/{id}', [DanaController::class, 'detail'])->name('dana.detail');
+
+Route::get('/send-mail', [MailController::class, 'sendMail']);
 
