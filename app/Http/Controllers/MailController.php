@@ -9,7 +9,7 @@ class MailController extends Controller
 {
     public function sendMail()
     {
-        $apikey = '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';
+        // $apikey = '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';
         $response = Http::withHeaders([
             'api-key' => $apikey,
             'Content-Type' => 'application/json',
