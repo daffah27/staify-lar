@@ -26,6 +26,7 @@ class PrestasiController extends Controller
             return view('mahasiswa.prestasi', compact('prestasis'));
         }
     }
+    
 
     public function accept($id)
     {

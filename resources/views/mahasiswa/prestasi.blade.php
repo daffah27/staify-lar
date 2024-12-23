@@ -42,7 +42,6 @@
                                             <p class="rounded p-2 text-white badge bg-success">Approved</p>
                                         @elseif ($prestasi->konfirmasi == 'ditolak')
                                             <p class="rounded p-2 text-white badge bg-danger">Reject</p>
-                                            <p>Prestasi Anda ditolak karena {{ $data->alasan }}, Mohon Revisi</p>
                                         @endif
                                     </td>
                                     <td>

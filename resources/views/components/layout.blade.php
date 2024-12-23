@@ -262,7 +262,7 @@
                                     value="{{ Auth::user()->angkatan }}">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ Auth::user()->email }}">  
+                                    value="{{ Auth::user()->email }}">
                                 <label for="Password">Password</label>
                                 <input type="password" class="form-control" id="Password" name="password">
                                 <label for="confirmPassword">Confirm Password</label>

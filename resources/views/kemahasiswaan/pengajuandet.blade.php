@@ -17,7 +17,8 @@
                         <div class="col-12">
                             <h4 class="card-title text-dark font-weight-bold">Nama Kegiatan: {{ $dana->nama_kegiatan }}
                             </h4>
-                            <h5 class="card-text text-dark font-weight-normal mb-4">Diajukan oleh: {{$dana->user->name}} </h5>
+                            <h5 class="card-text text-dark font-weight-normal mb-4">Diajukan oleh:
+                                {{ $dana->user->name }} </h5>
 
                             <div class="row mb-4">
                                 <div class="col-3">
@@ -31,7 +32,7 @@
                                 <div class="col-6">
                                     <p class="card-text">: {{ $dana->tempat }}</p>
                                     <p class="card-text">: {{ $dana->deskripsi }}</p>
-                                    <p class="card-text">: {{ $dana->jenis_kegiatan}}</p>
+                                    <p class="card-text">: {{ $dana->jenis_kegiatan }}</p>
                                     <p class="card-text">: {{ $dana->tanggal_mulai }}</p>
                                     <p class="card-text">: {{ $dana->tanggal_selesai }}</p>
                                     <p class="card-text">: Rp. {{ number_format($dana->nominal, 0, ',', '.') }}</p>
@@ -39,9 +40,11 @@
                             </div>
 
 
-                            <!-- Link untuk download proposal -->
-                            <a href="{{ asset('fileProposal/' . $dana->file_proposal) }}"
-                                class="card-text text-decoration-none" download>Download Proposal</a>
+
+                            <embed src="{{ asset('storage/uploads/proposal/' . $dana->file_proposal) }}"
+                                type="application/pdf" width="100%" height="600px" class="mb-1">
+                            {{-- <a href="{{ asset('storage/uploads/proposal/' . $dana->file_proposal) }}"
+                                class="card-text text-decoration-none" download>Download Proposal</a> --}}
 
                             <div class="text-center">
                                 @if ($dana->konfirmasi == 'on-review')

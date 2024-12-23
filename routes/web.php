@@ -27,6 +27,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 
 Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi')->middleware('auth');
+Route::get('/prestasi/verifikasi', [PrestasiController::class, 'prestasiver'])->name('prestasi.verifikasi');
 Route::get('/prestasi/{id}', [PrestasiController::class, 'show'])->name('prestasi.detail')->middleware('auth');
 Route::post('/prestasi/{id}/terima', [PrestasiController::class, 'accept'])->name('prestasi.accept');
 Route::post('/prestasi/{id}/tolak', [PrestasiController::class, 'reject'])->name('prestasi.reject');

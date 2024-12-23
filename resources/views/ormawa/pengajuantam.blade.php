@@ -72,11 +72,9 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="file">File Proposal</label>
-                                <input type="file" name="file_proposal" class="form-control" id="file_proposal">
-                                @error('file')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <label for="file_proposal">File Bukti (PDF Only)</label>
+                                <input type="file" name="file_proposal" class="form-control" id="file"
+                                    accept="application/pdf" required>
                             </div>
                         </div>
                     </div>

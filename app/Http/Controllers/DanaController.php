@@ -57,7 +57,13 @@ class DanaController extends Controller
         $dana->tanggal_selesai = $request->tanggal_selesai;
         $dana->nominal = $request->nominal;
         $dana->konfirmasi = 'on-review';
-        $dana->file_proposal = $request->file_proposal->store('proposal');
+     
+            $file = $request->file_proposal;
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('uploads/proposal', $filename, 'public');
+            $dana->file_proposal = $filename;
+   
+
         $dana->save();
         return redirect()->route('pengajuan')->with('success', 'Dana berhasil diajukan.');
     }
