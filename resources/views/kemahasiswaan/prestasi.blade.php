@@ -4,6 +4,11 @@
             <h1 class="h3 mb-0 text-gray-800">Daftar Prestasi</h1>
         </div>
 
+        @if (session('success'))
+            <p class="text-primary"> {{ session('success') }}</p>
+        @endif
+
+
         <!-- Telah di Verifikasi -->
         <div class="card mb-3">
             <div class="card-body">
@@ -56,7 +61,7 @@
                             <tr>
                                 <td>{{ $prestasi->nama_kompetisi }}</td>
                                 <td>{{ $prestasi->pencapaian }}</td>
-                                <td>{{ $prestasi->user->namalengkap }}</td>
+                                <td>{{ $prestasi->user->name }}</td>
                                 <td>{{ $prestasi->user->jurusan }}</td>
                                 <td>
                                     <div class="text-center">

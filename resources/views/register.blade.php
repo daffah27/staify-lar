@@ -51,6 +51,8 @@
                             <div class="col-sm-6">
                                 <label for="username">Username</label>
                                 <input type="text" class="mb-2 form-control form-control-user" id="username" placeholder="" name="username" required>
+                                <label for="username">Email</label>
+                                <input type="text" class="mb-2 form-control form-control-user" id="email" placeholder="" name="email" required>
                                 <label for="password">Password</label>
                                 <input type="password" class="mb-2 form-control form-control-user" id="password" name="password" required>
                                 <label for="confirmpassword">Confirm Password</label>
