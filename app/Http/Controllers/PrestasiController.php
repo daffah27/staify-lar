@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PrestasiController extends Controller
 {
@@ -29,8 +30,25 @@ class PrestasiController extends Controller
     public function accept($id)
     {
         $prestasi = Prestasi::findOrFail($id);
+     
         $prestasi->konfirmasi = 'terverifikasi';
         $prestasi->save();
+
+        $apikey = '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';
+        $response = Http::withHeaders([
+            'api-key' => $apikey,
+            'Content-Type' => 'application/json',
+        ])->post('https://api.brevo.com/v3/smtp/email',[
+            'sender' => [
+                'name' => 'Staify ',
+                'email' => 'staifylaravel@gmail.com ',
+            ],
+            'to' => [
+                ['email' => $prestasi->user->email,]
+            ],
+            'subject' => 'Achievment is accepted',
+            'htmlContent' => '<html><body><h1>Prestasi diterima</h1></body></html>',
+        ]);
 
         return redirect()->route('prestasi')->with('success', 'Prestasi diterima');
     }

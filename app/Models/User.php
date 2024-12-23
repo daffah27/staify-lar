@@ -24,6 +24,7 @@ class User extends Authenticatable
         'jurusan',
         'angkatan',
         'username',
+        'email',
         'password',
     ];
 
@@ -54,4 +55,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(dana::class);
     }
+
+
 }

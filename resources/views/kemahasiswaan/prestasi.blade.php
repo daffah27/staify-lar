@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $prestasi->nama_kompetisi }}</td>
                                 <td>{{ $prestasi->pencapaian }}</td>
-                                <td>{{ $prestasi->user->namalengkap }}</td>
+                                <td>{{ $prestasi->user->name }}</td>
                                 <td>{{ $prestasi->user->jurusan }}</td>
                                 <td>{{ $prestasi->konfirmasi }}</td>
                                 <td><a href="{{ route('prestasi', $prestasi->id) }}"
