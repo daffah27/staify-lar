@@ -96,15 +96,28 @@
                                     <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="4">{{ old('deskripsi') }}</textarea>
                                 </div>
 
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <label for="">File Bukti</label>
                                     <input type="file" name="file" class="form-control" id="nim"
                                         placeholder="">
+                                </div> --}}
+
+                                <div class="col-12">
+                                    <label for="file">File Bukti (PDF Only)</label>
+                                    <input 
+                                        type="file" 
+                                        name="file" 
+                                        class="form-control" 
+                                        id="file" 
+                                        accept="application/pdf" 
+                                        required
+                                    >
                                 </div>
+                                
                             </div>
                         </div>
                         <button type="submit" name="submit"
-                            class="btn btn-primary btn-user btn-block">Prestasi</button>
+                            class="btn btn-primary btn-user btn-block">Tambah Prestasi</button>
                     </form>
 
 

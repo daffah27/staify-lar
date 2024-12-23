@@ -22,6 +22,7 @@ class Autentifikasi extends Controller
         $user->jurusan = $request->jurusan;
         $user->angkatan = $request->angkatan;
         $user->username = $request->username;
+        $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role = 'mahasiswa';
         $user->save();
@@ -42,6 +43,7 @@ class Autentifikasi extends Controller
         $user->jurusan = $request->jurusan;
         $user->angkatan = $request->angkatan;
         $user->username = Auth::user()->username;
+        $user->email = $request->email; 
         $user->password = bcrypt($request->password);
         $user->role = Auth::user()->role;
         $user->save();

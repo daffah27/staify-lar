@@ -247,7 +247,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" class="form-control" id="role"
-                                value="{{ Auth::user()->role }}">
+                                    value="{{ Auth::user()->role }}">
                                 <label for="name">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="name" name="namalengkap"
                                     value="{{ Auth::user()->name }}">
@@ -260,6 +260,9 @@
                                 <label for="Angkatan">Angkatan</label>
                                 <input type="number" class="form-control" id="angkatan" name="angkatan"
                                     value="{{ Auth::user()->angkatan }}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ Auth::user()->email }}">  
                                 <label for="Password">Password</label>
                                 <input type="password" class="form-control" id="Password" name="password">
                                 <label for="confirmPassword">Confirm Password</label>
@@ -288,6 +291,9 @@
                                     value="{{ Auth::user()->jurusan }}">
                                 <input type="hidden" class="form-control" id="angkatan" name="angkatan"
                                     value="{{ Auth::user()->angkatan }}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ Auth::user()->email }}">
                                 <label for="Password">Password</label>
                                 <input type="password" class="form-control" id="Password" name="password">
                                 <label for="confirmPassword">Confirm Password</label>
