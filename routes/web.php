@@ -8,6 +8,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MailController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,20 +35,24 @@ Route::get('/prestasitambah', [PrestasiController::class, 'create'])->name('pres
 Route::post('/prestasitambah', [PrestasiController::class, 'store']);
 
 Route::get('/kegiatan', [KegiatanController::class, 'index'])->name('kegiatan')->middleware('auth');
-
 Route::get('/kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
 Route::post('/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
-
 Route::get('/kegiatan/{id}', [KegiatanController::class, 'show'])->name('kegiatan.show')->middleware('auth');
-
 Route::get('/kegiatan/{id}/edit', [KegiatanController::class, 'edit'])->name('kegiatan.edit');
 Route::post('/kegiatan/{id}', [KegiatanController::class, 'update'])->name('kegiatan.update');
 Route::delete('/kegiatan/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
+
+Route::get('/akun', [DashboardController::class, 'akunview'])->name('akun')->middleware('auth');
+Route::post('/akun', [DashboardController::class, 'akunstore'])->name('akun.store');
+Route::post('/akun/{id}/reset', [DashboardController::class, 'akunreset'])->name('akun.reset');
+Route::delete('/akun/{id}', [DashboardController::class, 'akundestroy'])->name('akun.destroy');
 
 Route::get('/pengajuan', [DanaController::class, 'index'])->name('pengajuan')->middleware('auth');
 Route::post('/pengajuan/accept/{id}', [DanaController::class, 'accept'])->name('dana.accept')->middleware('auth');
 Route::post('/pengajuan/reject/{id}', [DanaController::class, 'reject'])->name('dana.reject');
 Route::get('/pengajuan/detail/{id}', [DanaController::class, 'detail'])->name('dana.detail');
+Route::get('/pengajuan/tambah', [DanaController::class, 'create'])->name('dana.create')->middleware('auth');
+Route::post('/pengajuan/tambah', [DanaController::class, 'store'])->name('dana.store');
 
 Route::get('/send-mail', [MailController::class, 'sendMail']);
 

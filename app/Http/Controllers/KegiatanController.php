@@ -10,8 +10,13 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        $kegiatans = Kegiatan::all();
-        return view('kemahasiswaan.kegiatan', compact('kegiatans'));
+        if (Auth::user()->role == 'ormawa') {
+            $kegiatans = Kegiatan::where('id_user', Auth::user()->id)->get();
+            return view('ormawa.kegiatan', compact('kegiatans'));
+        } elseif (Auth::user()->role == 'kemahasiswaan') {
+            $kegiatans = Kegiatan::all();
+            return view('kemahasiswaan.kegiatan', compact('kegiatans'));
+        }
     }
 
     public function show($id)

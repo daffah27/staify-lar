@@ -28,9 +28,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Himadira',
-            'nim' => '01',
-            'jurusan' => 'RPLA',
-            'angkatan' => '2023',
             'email' => 'Himadira@example.com',
             'username' => 'ormawa',
             'password' => bcrypt('123'),
@@ -39,9 +36,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Kemahasiswaan',
-            'nim' => '02',
-            'jurusan' => 'RPLA',
-            'angkatan' => '2023',
             'email' => 'Kemahasiswaan@example.com',
             'username' => 'kemahasiswaan',
             'password' => bcrypt('123'),

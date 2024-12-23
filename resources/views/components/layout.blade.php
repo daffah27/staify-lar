@@ -84,6 +84,12 @@
                         <i class="fas fa-fw fa-book"></i>
                         <span>Prestasi</span></a>
                 </li>
+
+                <li class="nav-item {{ Request::is('akun*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('akun') }}">
+                        <i class="fas fa-fw bi bi-person-circle"></i>
+                        <span>Akun</span></a>
+                </li>
             @endif
 
             @if (Auth::user()->role == 'ormawa')

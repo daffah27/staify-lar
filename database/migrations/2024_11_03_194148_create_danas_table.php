@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('file_proposal');
-            $table->string('alasan');
+            $table->string('alasan')->nullable();
             $table->string('nominal');
             $table->string('konfirmasi');
             $table->timestamps();
