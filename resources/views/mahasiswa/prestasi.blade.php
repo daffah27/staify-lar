@@ -45,8 +45,12 @@
                                             <p>Prestasi Anda ditolak karena {{ $data->alasan }}, Mohon Revisi</p>
                                         @endif
                                     </td>
-                                    <td><a href="{{ route('prestasi.detail', $prestasi->id) }}"
-                                            class="btn btn-primary small">Detail</a></td>
+                                    <td>
+                                        <a href="{{ route('prestasi.detail', $prestasi->id) }}"
+                                            class="btn btn-secondary">
+                                            <i class="bi bi-exclamation-square"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
