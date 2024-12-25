@@ -35,7 +35,7 @@ class PrestasiController extends Controller
         $prestasi->konfirmasi = 'terverifikasi';
         $prestasi->save();
 
-        $apikey ="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";
+        $apikey ="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";
         $response = Http::withHeaders([
             'api-key' => $apikey,
             'Content-Type' => 'application/json',
@@ -48,7 +48,13 @@ class PrestasiController extends Controller
                 ['email' => $prestasi->user->email,]
             ],
             'subject' => 'Achievment is accepted',
-            'htmlContent' => '<html><body><h1>Prestasi diterima</h1></body></html>',
+            'htmlContent' => '<html>
+                                <body>
+                                    <h1>Halo ' . $prestasi->user->name . '</h1>
+                                    <p>Prestasi <strong>' . $prestasi->pencapaian . ' untuk kompetisi ' . $prestasi->nama_kompetisi . ' </strong> anda telah <strong> diterima </strong></p>
+                                    <p>Terima kasih telah mengajukan prestasi</p>
+                                </body>
+                            </html>',
         ]);
 
         return redirect()->route('prestasi')->with('success', 'Prestasi diterima');
