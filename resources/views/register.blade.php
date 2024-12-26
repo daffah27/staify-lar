@@ -34,6 +34,9 @@
                         <img class="img-fluid" src="img/Logo Staify.svg" alt="">
                         <br><br>
                         <h1 class="h4 text-gray-900 mb-4">Create an Account</h1>
+                        @if (session('message'))
+                            <p class="text-danger"> {{ session('message') }}</p>
+                        @endif
                     </div>
                     <form class="user" method="POST" action="/register">
                         @csrf

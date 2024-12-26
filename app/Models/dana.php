@@ -9,7 +9,7 @@ class dana extends Model
 {
     protected $table = 'danas';
     protected $fillable = [
-        'user_id',
+        'id_user',
         'nama_kegiatan',
         'jenis_kegiatan',
         'tempat',
@@ -23,6 +23,6 @@ class dana extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'id_user');    
     }
 }

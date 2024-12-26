@@ -40,6 +40,9 @@
                                     <img class="img-fluid" src="img/Logo Staify.svg" alt="">
                                     <br><br>
                                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                    @if (session('success'))
+                                    <p class="text-primary"> {{ session('success') }}</p>
+                                    @endif
                                 </div>
                                 <form class="user" method="POST" action="/login">
                                     @csrf

@@ -16,6 +16,13 @@ class Autentifikasi extends Controller
 
     public function buatUser(Request $request)
     {
+
+        $check = User::where('username', $request->username)->first();
+
+        if ($check) {
+            return redirect()->back()->with('message', 'Username sudah digunakan');
+        }
+
         $user = new User;
         $user->name = $request->namalengkap;
         $user->nim = $request->nim;
@@ -27,7 +34,7 @@ class Autentifikasi extends Controller
         $user->role = 'mahasiswa';
         $user->save();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Akun berhasil dibuat.');
     }
 
     public function login()

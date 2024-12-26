@@ -35,7 +35,7 @@ class PrestasiController extends Controller
         $prestasi->konfirmasi = 'terverifikasi';
         $prestasi->save();
 
-        $apikey ="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";
+        $apikey ='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';
         $response = Http::withHeaders([
             'api-key' => $apikey,
             'Content-Type' => 'application/json',
@@ -47,12 +47,15 @@ class PrestasiController extends Controller
             'to' => [
                 ['email' => $prestasi->user->email,]
             ],
-            'subject' => 'Achievment is accepted',
+            'subject' => '🎉 Prestasi Anda Telah Diterima!',
             'htmlContent' => '<html>
                                 <body>
-                                    <h1>Halo ' . $prestasi->user->name . '</h1>
-                                    <p>Prestasi <strong>' . $prestasi->pencapaian . ' untuk kompetisi ' . $prestasi->nama_kompetisi . ' </strong> anda telah <strong> diterima </strong></p>
-                                    <p>Terima kasih telah mengajukan prestasi</p>
+                                    <p>Halo <strong>' . $prestasi->user->name . '</strong>,</p>
+                                    <p>Selamat! Kami dengan senang hati menginformasikan bahwa prestasi <strong>"' . $prestasi->pencapaian . ' pada ' . $prestasi->nama_kompetisi . '"</strong> telah kami terima.</p>
+                                    <p>Prestasi ini akan menjadi bagian dari portofolio Anda. Kami sangat mengapresiasi dedikasi dan usaha Anda dalam mencapai prestasi ini.</p>
+                                    <p>Jika Anda memiliki pertanyaan atau ingin melakukan pembaruan pada data prestasi Anda, jangan ragu untuk menghubungi tim kami.</p>
+                                    <p>Terima kasih telah menggunakan <strong>Staify</strong>,</p>
+                                    <p><em>Admin Kemahasiswaan</em></p>
                                 </body>
                             </html>',
         ]);
@@ -64,7 +67,33 @@ class PrestasiController extends Controller
     {
         $prestasi = Prestasi::findOrFail($id);
         $prestasi->konfirmasi = 'ditolak';
+        $prestasi->alasan = request('alasan');
         $prestasi->save();
+
+        $apikey ='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';
+        $response = Http::withHeaders([
+            'api-key' => $apikey,
+            'Content-Type' => 'application/json',
+        ])->post('https://api.brevo.com/v3/smtp/email',[
+            'sender' => [
+                'name' => 'Staify ',
+                'email' => 'staifylaravel@gmail.com ',
+            ],
+            'to' => [
+                ['email' => $prestasi->user->email,]
+            ],
+            'subject' => '😔 Prestasi Anda Belum Bisa Diterima',
+            'htmlContent' => '<html>
+                                <body>
+                                    <p>Halo <strong>' . $prestasi->user->name . '</strong>,</p>
+                                    <p>Terima kasih telah mengirimkan prestasi Anda <strong>"' . $prestasi->pencapaian . ' pada ' . $prestasi->nama_kompetisi . '"</strong> untuk kami tinjau. Setelah melalui proses evaluasi, kami mohon maaf bahwa prestasi tersebut belum dapat kami terima.</p>
+                                    <p>Dengan alasan, <strong>' . $prestasi->alasan . '</strong>. Kami sangat menghargai usaha Anda dan mendorong Anda untuk terus berkarya. Anda dapat memperbaiki atau melengkapi data prestasi Anda dan mengajukannya kembali di kemudian hari.</p>
+                                    <p>Jika Anda memerlukan panduan atau klarifikasi lebih lanjut, jangan ragu untuk menghubungi tim kami.</p>
+                                    <p>Terima kasih atas pengertian Anda dan teruslah bersemangat!</p>
+                                    <p><em>Admin Kemahasiswaan</em></p>
+                                </body>
+                            </html>',
+        ]);
 
         return redirect()->route('prestasi')->with('error', 'Prestasi ditolak');
     }

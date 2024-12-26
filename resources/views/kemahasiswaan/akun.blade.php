@@ -14,6 +14,9 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h1 class="h5 mb-2 text-gray-800">Akun Ormawa</h1>
+                @if(session('success'))
+                    <p class="text-primary"> {{ session('success') }}</p>
+                @endif
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

@@ -202,10 +202,12 @@
                         alt="...">
                 </div>
                 @if (Auth::user()->role == 'mahasiswa')
-                    <h5 class="text-center text-dark font-weight-bold">Nama Lengkap : {{ Auth::user()->name }}</h5>
+                    <h5 class="text-center text-dark font-weight-bold mb-3">Nama Lengkap : {{ Auth::user()->name }}</h5>
+                    <p class="text-center">Email :{{ Auth::user()->email }}</p>
                     <p class="text-center">NIM : {{ Auth::user()->nim }}</p>
                     <p class="text-center">Jurusan : {{ Auth::user()->jurusan }}</p>
                     <p class="text-center">Angkatan : {{ Auth::user()->angkatan }}</p>
+                    <p class="text-center">Tipe : {{ Auth::user()->role }}</p>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                         <button class="btn btn-primary" type="button" data-target="#editProfileModal"
@@ -213,7 +215,7 @@
                     </div>
                 @endif
                 @if (Auth::user()->role == 'kemahasiswaan')
-                    <h5 class="text-center text-dark font-weight-bold">Nama Lengkap : {{ Auth::user()->name }}</h5>
+                    <h5 class="text-center text-dark font-weight-bold">{{ Auth::user()->name }}</h5>
                     <p class="text-center">Tipe : {{ Auth::user()->role }}</p>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -222,7 +224,8 @@
                     </div>
                 @endif
                 @if (Auth::user()->role == 'ormawa')
-                    <h5 class="text-center text-dark font-weight-bold">Nama Lengkap : {{ Auth::user()->name }}</h5>
+                    <h5 class="text-center text-dark font-weight-bold mb-3">Nama Ormawa : {{ Auth::user()->name }}</h5>
+                    <p class="text-center">Email : {{ Auth::user()->email }}</p>
                     <p class="text-center">Tipe : {{ Auth::user()->role }}</p>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -310,12 +313,14 @@
                         <form action="/editprofile" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Nama Lengkap</label>
-                                <input disabled type="text" class="form-control" id="name"
+                                <label for="name">Nama Ormawa</label>
+                                <input type="text" class="form-control" id="name"
                                     name="namalengkap" value="{{ Auth::user()->name }}">
-                                <label for="NIM">NIM</label>
                                 <input disabled type="hidden" class="form-control" id="nim"
                                     value="{{ Auth::user()->nim }}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ Auth::user()->email }}">
                                 <input type="hidden" class="form-control" id="jurusan" name="jurusan"
                                     value="{{ Auth::user()->jurusan }}">
                                 <input type="hidden" class="form-control" id="angkatan" name="angkatan"

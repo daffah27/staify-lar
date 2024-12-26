@@ -49,8 +49,7 @@
                                     required>
 
                                 <label for="tanggalSelesai">Tanggal Selesai</label>
-                                <input type="date" name="tanggal_selesai" class="form-control"
-                                    id="tanggalSelesai">
+                                <input type="date" name="tanggal_selesai" class="form-control" id="tanggalSelesai">
 
                                 <label for="deskripsi">Deskripsi</label>
                                 <textarea class="form-control" name="deskripsi" id="deskripsi" rows="4"></textarea>
@@ -62,7 +61,11 @@
 
                             <div class="col-12">
                                 <label for="file">File Poster Kegiatan</label>
-                                <input type="file" name="file" class="form-control" id="file">
+                                <img id="preview" src="#" alt="Preview Gambar"
+                                    style="max-width: 100%; max-height: 300px; display: none;" />
+
+                                <input type="file" name="file" class="form-control" id="file"
+                                    accept="image/jpg,image/jpeg,image/png">
                             </div>
                         </div>
                     </div>
@@ -73,3 +76,28 @@
         </div>
     </div>
 </x-layout>
+
+<script>
+    document.getElementById('file').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
+
+        if (file) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert('File yang dipilih bukan gambar!');
+            }
+        } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+    });
+</script>

@@ -86,7 +86,8 @@ class DashboardController extends Controller
         $user->role = request('role');
         $user->save();
 
-        return redirect()->route('akun');
+
+        return redirect()->route('akun')->with('success', 'Akun berhasil dibuat.');
     }
 
     public function akundestroy($id)

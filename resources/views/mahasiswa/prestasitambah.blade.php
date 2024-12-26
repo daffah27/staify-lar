@@ -98,8 +98,11 @@
 
                                 <div class="col-12">
                                     <label for="">File Bukti</label>
-                                    <input type="file" name="file" class="form-control" id="nim"
-                                        placeholder="">
+                                    <img id="preview" src="#" alt="Preview Gambar"
+                                        style="max-width: 100%; max-height: 300px; display: none;" />
+
+                                    <input type="file" name="file" class="form-control" id="file"
+                                        accept="image/jpg,image/jpeg,image/png">
                                 </div>
 
                                 {{-- <div class="col-12">
@@ -113,11 +116,11 @@
                                         required
                                     >
                                 </div> --}}
-                                
+
                             </div>
                         </div>
-                        <button type="submit" name="submit"
-                            class="btn btn-primary btn-user btn-block">Tambah Prestasi</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Tambah
+                            Prestasi</button>
                     </form>
 
 
@@ -131,3 +134,28 @@
 
     <!-- /.container-fluid -->
 </x-layout>
+
+<script>
+    document.getElementById('file').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
+
+        if (file) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert('File yang dipilih bukan gambar!');
+            }
+        } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+    });
+</script>
